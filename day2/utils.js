@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import * as dotenv from 'dotenv' 
 dotenv.config();
 
+const isMainnet = true
 const getProvider = (mainnet = false) => {
     const provider = mainnet
     ? `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`
@@ -9,13 +10,24 @@ const getProvider = (mainnet = false) => {
     return new ethers.providers.JsonRpcProvider(provider);
 }
 
-const provider = getProvider(true);
+// const provider = getProvider(isMainnet);
 
 const generateNewWallet = () =>{
     const wallet = ethers.Wallet.createRandom();
     console.log("address:", wallet.address);
-    console.log("preivate key:", wallet.privateKey);
+    console.log("private key:", wallet.privateKey);
     console.log("mnemonic:", wallet.mnemonic.phrase);
 }
 
-generateNewWallet()
+const getSigner = (mainnet = false) => {
+    const provider = getProvider(mainnet);
+    return new ethers.Wallet(process.env.DAY2_PRIVATE_KEY, provider);
+
+}
+
+const signer = getSigner();
+console.log("signer", await signer.getAddress());
+
+// generateNewWallet()
+
+export { getProvider, getSigner, generateNewWallet }
