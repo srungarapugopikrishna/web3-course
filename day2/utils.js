@@ -21,12 +21,12 @@ const generateNewWallet = () =>{
 
 const getSigner = (mainnet = false) => {
     const provider = getProvider(mainnet);
-    return new ethers.Wallet(process.env.DAY2_PRIVATE_KEY, provider);
+    return new ethers.Wallet(process.env.DAY1_PRIVATE_KEY, provider);
 
 }
 
 const signer = getSigner();
-console.log("signer", await signer.getAddress());
+// console.log("signer", await signer.getAddress());
 
 // generateNewWallet()
 
