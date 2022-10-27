@@ -1,9 +1,9 @@
 import { ethers } from "ethers";
-import { getProvider } from "./utils.js";
+import { getProvider, getSigner } from "./utils.js";
 import nftAbi from "./abi/nftAbi.js";
 
 const nftAddress = "0x27124948dcc9EbF3113681898FF217d3E4f56900";
-const goerliProvider = getProvider();
+const goerliSigner = getSigner();
 
 const nftContract = new ethers.Contract(nftAddress, nftAbi, goerliProvider);
 
