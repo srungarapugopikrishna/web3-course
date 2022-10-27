@@ -78,7 +78,11 @@ async function sendTransaction(){
         value: myBalance.div(BigNumber.from(100)),
     });
 
-    console.log("TX SENT!", tx)
+    console.log("TX SENT!", tx);
+
+    await tx.wait();
+
+    console.log("TX CONFIRMED!");
 
     
 }
