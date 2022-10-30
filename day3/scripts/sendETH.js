@@ -9,6 +9,8 @@ async function main() {
 
   const myBalance = await hardhatSigner.getBalance();
 
+  console.log("My balance", ethers.utils.formatEther(myBalance));
+
   const toAddress = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
 
   console.log("Sending ETH to: ", toAddress);

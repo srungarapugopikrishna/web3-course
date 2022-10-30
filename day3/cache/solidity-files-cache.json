@@ -37,8 +37,8 @@
       ]
     },
     "D:\\projects\\ethers-scripts\\day3\\contracts\\Greeter.sol": {
-      "lastModificationDate": 1667048340118,
-      "contentHash": "4b59f532432bd507cadcd894f7bd4414",
+      "lastModificationDate": 1667054047494,
+      "contentHash": "8e4874456d7d9f6fa1368eebca5a7213",
       "sourceName": "contracts/Greeter.sol",
       "solcConfig": {
         "version": "0.8.17",
