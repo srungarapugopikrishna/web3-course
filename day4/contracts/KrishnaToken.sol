@@ -10,6 +10,7 @@ contract KrishToken{
     address public immutable boss;
 
     mapping(address => uint256) public balances;
+    event Buy(address indexed buyer);
 
     constructor(){
         boss = msg.sender;
@@ -40,6 +41,15 @@ contract KrishToken{
 
         balances[msg.sender] += 1;
         totalCreated += 1;
+        
+        emit Buy(msg.sender);
     }
+
+    function withdraw() public onlyBoss{
+        (bool sent, bytes memory data) = boss.call{value: address(this).balance}("");
+        require(sent, "Failed to send Ether");
+    }
+
+    receive() external payable(){}
 
 }
