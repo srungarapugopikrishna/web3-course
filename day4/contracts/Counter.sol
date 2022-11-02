@@ -10,6 +10,11 @@ contract Counter {
         boss = msg.sender;
     }
 
+    modifier onlyBoss() {
+        require(msg.sender == boss, "Sorry, not the boss.");
+        _;
+    }
+
     // Function to get the current count
     function get() public view returns (uint) {
         return count;
@@ -20,10 +25,15 @@ contract Counter {
         count += 1;
     }
 
+    // Function to increment count by 1
+    function superInc() public onlyBoss {
+        count += 10;
+    }
+
     // Function to decrement count by 1
     function dec() public {
         // This function will fail if count = 0
-        require(msg.sender == boss, "Sorry, not the boss. Only boss can decrement...");
+        require(msg.sender == boss, "Sorry, not the boss.");
         count -= 1;
     }
 }

@@ -28,6 +28,9 @@ describe("Counter", function () {
     const counter = await Counter.deploy(10);
     await counter.deployed();
     console.log(await counter.boss());
-    const decTx = await counter.connect(signer1).dec();
+    // const decTx = await counter.connect(signer1).dec();
+
+    const decTx = await counter.connect(signer0).dec();
+    const suprIncTx = await counter.connect(signer1).dec();
   });
 });
